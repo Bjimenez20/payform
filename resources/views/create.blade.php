@@ -4,7 +4,7 @@
         <div class="card card-body shadow">
             <h1 class="h1">PayForm</h1>
             <div class="col mb-5">
-                <form>
+                <form id="payments">
                     <div class="row-reverse">
                         <div class="col mb-4">
                             <div class="row">
@@ -25,7 +25,7 @@
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">ADJUNTAR ARCHIVO<span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="file" class="form-control form-control-lg" name="adjunto" id="adjunto"
+                                    <input type="file" class="form-control form-control-lg" name="archivo" id="archivo"
                                         data-title="Adjuntar Archivo">
                                 </div>
                             </div>

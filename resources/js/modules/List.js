@@ -4,13 +4,24 @@ function showLoadingAlert() {
         html: '<span class="iconify me-3" data-icon="line-md:uploading-loop" data-width="150" style="color: rgb(87, 24, 176)"></span><span class="fw-bold h3">Cargando...</span>',
         showCancelButton: false,
         showConfirmButton: false,
-        allowOutsideClick: false
+        allowOutsideClick: false,
+        willClose: () => {
+            $('#fileModal').modal('hide');
+        }
     });
 }
 
+$(document).on('click', '.viewFileLink', function (e) {
+    e.preventDefault();
+    var fileUrl = $(this).data('url');
+    $('#fileFrame').attr('src', fileUrl);
+    $('#fileModal').modal('show');
+});
+
+
 $('#listPayform').DataTable({
     responsive: true,
-    order: [[ 1, "asc" ]] ,
+    order: [[1, "asc"]],
     ajax: {
         url: listUrl,
         dataSrc: "data",
@@ -20,6 +31,9 @@ $('#listPayform').DataTable({
 
     },
     columns: [
+        {
+            data: 'id'
+        },
         {
             data: 'name'
         },
@@ -34,6 +48,16 @@ $('#listPayform').DataTable({
                 var month = ("0" + (date.getMonth() + 1)).slice(-2);
                 var day = ("0" + date.getDate()).slice(-2);
                 return year + "-" + month + "-" + day;
+            }
+        },
+        {
+            data: 'file_url',
+            render: function (data, type, row) {
+                if (data) {
+                    return '<a href="#" class="viewFileLink" data-url="' + data + '">Ver archivo</a>';
+                } else {
+                    return 'Archivo no disponible';
+                }
             }
         },
         {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->date('payment_date');
             $table->string('approximate_amounte');
+            $table->string('file_url');
             $table->timestamps();
         });
     }

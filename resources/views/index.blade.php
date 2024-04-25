@@ -20,9 +20,11 @@
                             <table class="table table-hover" id="listPayform">
                                 <thead class="bg-table-head  text-white">
                                     <tr>
+                                        <th scope="col">#</th>
                                         <th scope="col">TIPO DE PAGO</th>
                                         <th scope="col">FECHA DE PAGO</th>
                                         <th scope="col">FECHA DE CREACIÓN</th>
+                                        <th scope="col">ARCHIVO</th>
                                         <th scope="col">ACCIÓN</th>
                                     </tr>
                                 </thead>
@@ -30,6 +32,24 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar el archivo -->
+    <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fileModalLabel">Archivo</h5>
+                </div>
+                <div class="modal-body">
+                    <iframe id="fileFrame" src="" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

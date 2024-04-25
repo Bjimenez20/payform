@@ -10,6 +10,7 @@ btnSubmitCreate.addEventListener('click', function () {
         monto_aprox: document.getElementById('monto_aprox').value
     };
 
+
     let allFieldsFilled = true;
     let emptyFields = [];
 
@@ -29,6 +30,8 @@ btnSubmitCreate.addEventListener('click', function () {
 
     if (allFieldsFilled) {
 
+        let formData = new FormData(document.getElementById("payments"));
+        console.log(formData);
         var data = {
             tipo_pago: document.getElementById('tipo_pago').value,
             correo_solicitante: document.getElementById('correo_solicitante').value,
@@ -41,7 +44,7 @@ btnSubmitCreate.addEventListener('click', function () {
             '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> CARGANDO...'
         ).addClass('btn btn-secondary');
 
-        axios.post(createUrl, data, {
+        axios.post(createUrl, formData, data , {
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
                 'X-Requested-With': 'XMLHttpRequest',
