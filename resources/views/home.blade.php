@@ -10,10 +10,6 @@
                                 <div class="col">
                                     <h2 class="fw-bold">Listado de pagos</h2>
                                 </div>
-                                <div class="col d-flex justify-content-end">
-                                    <a href="{{ route('create') }}" class="btn btn-primary rounded-5">REGISTRAR
-                                        PAGO</a>
-                                </div>
                             </div>
                         </div>
                         <div class="col mb-5 table-responsive">

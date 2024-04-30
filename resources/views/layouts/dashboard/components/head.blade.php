@@ -9,8 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon"
-        href="{{ asset('assets/img/favicon.jpeg') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpeg') }}" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
@@ -38,5 +37,16 @@
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.colVis.js') }}"></script>
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.html5.js') }}"></script>
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.print.js') }}"></script>
+    <style>
+        body {
+            background-image: url('{{ asset('assets/img/1.png') }}');
+            background-size: cover;
+            background-position: top;
+        }
 
+        .btn-personality-first {
+            background: rgb(24, 96, 240);
+            background: linear-gradient(270deg, rgba(24, 96, 240, 1) 35%, rgba(24, 179, 240, 1) 100%);
+        }
+    </style>
 </head>

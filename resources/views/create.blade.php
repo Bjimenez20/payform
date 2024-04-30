@@ -4,6 +4,10 @@
         <div class="card card-body shadow">
             <h1 class="h1">PayForm</h1>
             <div class="col mb-5">
+                <div class="col d-flex justify-content-end">
+                    <a href="{{ route('login.login') }}" class="btn btn-primary rounded-5">VER
+                        PAGO</a>
+                </div>
                 <form id="payments">
                     <div class="row-reverse">
                         <div class="col mb-4">
