@@ -22,9 +22,9 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
-        // dd(Auth::attempt($credentials));
+        //dd(Auth::attempt($credentials));
         if (!Auth::validate($credentials)) {
-            return redirect()->to('/')->withErrors('incorrect credentials');
+            return redirect()->to('/login')->withErrors('incorrect credentials');
         }
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
