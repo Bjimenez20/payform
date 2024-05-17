@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Payform;
+use App\Models\Type_flight;
 use App\Models\Type_payment;
 use Carbon\Carbon;
 
@@ -18,8 +19,9 @@ class PayformController extends Controller
     public function create()
     {
         $type_payments = Type_payment::all();
+        $type_filghts = Type_flight::all();
         $date = Carbon::now()->format('Y-m-d');
-        return view('create', compact('type_payments', 'date'));
+        return view('create', compact('type_payments', 'type_filghts', 'date'));
     }
 
     public function store(Request $request)
@@ -27,10 +29,10 @@ class PayformController extends Controller
         $data = new Payform();
 
 
-        $data->type_payment = $request->input('tipo_pago');
-        $data->email = $request->input('correo_solicitante');
-        $data->payment_date = $request->input('fecha_pago');
-        $data->approximate_amounte = $request->input('monto_aprox');
+        $data->type_payment = $request->input('payment_type');
+        $data->email = $request->input('email');
+        $data->payment_date = $request->input('payment_date');
+        $data->approximate_amounte = $request->input('approximate_amounte');
 
         // Verificar si se ha enviado un archivo
         if ($request->hasFile('archivo')) {

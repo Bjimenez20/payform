@@ -39,7 +39,6 @@
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.print.js') }}"></script>
     <style>
         body {
-            background-image: url('{{ asset('assets/img/1.png') }}');
             background-size: cover;
             background-position: top;
         }
@@ -47,6 +46,10 @@
         .btn-personality-first {
             background: rgb(24, 96, 240);
             background: linear-gradient(270deg, rgba(24, 96, 240, 1) 35%, rgba(24, 179, 240, 1) 100%);
+        }
+
+        h3 {
+            color: #5718B0;
         }
     </style>
 </head>
