@@ -2,16 +2,24 @@ $(document).ready(function () {
     $('#payment_type').on('change', function () {
         var selectedTipoPago = $(this).val();
 
+        if (selectedTipoPago == '1' || selectedTipoPago == '2') {
+            $('#vuelo_vuelta').addClass('d-none');
+            $('#vuelo_ida').addClass('d-none');
+        }
         if (selectedTipoPago == '3') {
             $('#option_pay_link_pse_portals').removeClass('d-none');
             $('#option_reference_id_pse_portals').removeClass('d-none');
             $('#option_pay_instructions_pse_portals').removeClass('d-none');
+            $('#vuelo_vuelta').addClass('d-none');
+            $('#vuelo_ida').addClass('d-none');
         } else if (selectedTipoPago == '5') {
             $('#option_pay_link_pse_portals').removeClass('d-none');
             $('#option_reference_id_pse_portals').removeClass('d-none');
             $('#option_pay_instructions_pse_portals').removeClass('d-none');
             $('#option_user_portals').removeClass('d-none');
             $('#option_password_portals').removeClass('d-none');
+            $('#vuelo_vuelta').addClass('d-none');
+            $('#vuelo_ida').addClass('d-none');
         } else {
             $('#option_pay_link_pse_portals').addClass('d-none');
             $('#option_reference_id_pse_portals').addClass('d-none');
@@ -28,6 +36,8 @@ $(document).ready(function () {
 
         if (selectedTipoPago == '6') {
             $('#option_urgentes').removeClass('d-none');
+            $('#vuelo_vuelta').addClass('d-none');
+            $('#vuelo_ida').addClass('d-none');
         } else {
             $('#option_urgentes').addClass('d-none');
         }
