@@ -21,7 +21,7 @@ $(document).on('click', '.viewFileLink', function (e) {
 
 $('#listPayform').DataTable({
     responsive: true,
-    order: [[1, "asc"]],
+    order: [[1, "desc"]],
     ajax: {
         url: listUrl,
         dataSrc: "data",
@@ -38,17 +38,24 @@ $('#listPayform').DataTable({
             data: 'name'
         },
         {
-            data: 'payment_date'
+            data: 'payment_name'
         },
         {
-            data: 'created_at',
+            data: 'email'
+        },
+        {
+            data: 'payment_date',
             render: function (data, type, row) {
                 var date = new Date(data);
-                var year = date.getFullYear();
-                var month = ("0" + (date.getMonth() + 1)).slice(-2);
-                var day = ("0" + date.getDate()).slice(-2);
-                return year + "-" + month + "-" + day;
+                var utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+                var year = utcDate.getFullYear();
+                var month = ("0" + (utcDate.getMonth() + 1)).slice(-2);
+                var day = ("0" + utcDate.getDate()).slice(-2);
+                return day + "/" + month + "/" + year;
             }
+        },
+        {
+            data: 'created_at'
         },
         {
             data: 'file_url',
@@ -89,12 +96,13 @@ $('#listPayform').DataTable({
     },
     dom: 'Bfrtilp',
     searching: true,
+    ordering: false,
     paging: true,
     lengthMenu: [
         [10, 25, 50, -1],
         [10, 25, 50, 'Todos']
     ],
-    pageLength: 5,
+    pageLength: 10,
     language: {
         "lengthMenu": "Mostrar _MENU_ registros",
         "zeroRecords": "No se encontraron resultados",

@@ -29,6 +29,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">TIPO DE PAGO</th>
+                                        <th scope="col">NOMBRE DE PAGO</th>
+                                        <th scope="col">CORREO DEL SOLICITANTE</th>
                                         <th scope="col">FECHA DE PAGO</th>
                                         <th scope="col">FECHA DE CREACIÓN</th>
                                         <th scope="col">ARCHIVO</th>

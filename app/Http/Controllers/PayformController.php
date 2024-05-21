@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Payform;
+use App\Models\State;
 use App\Models\Type_flight;
 use App\Models\Type_payment;
 use Carbon\Carbon;
@@ -18,10 +19,10 @@ class PayformController extends Controller
 
     public function create()
     {
-        $type_payments = Type_payment::all();
+        $payments_type = Type_payment::all();
         $type_filghts = Type_flight::all();
         $date = Carbon::now()->format('Y-m-d');
-        return view('create', compact('type_payments', 'type_filghts', 'date'));
+        return view('create', compact('payments_type', 'type_filghts', 'date'));
     }
 
     public function store(Request $request)
@@ -29,10 +30,31 @@ class PayformController extends Controller
         $data = new Payform();
 
 
-        $data->type_payment = $request->input('payment_type');
+        $data->payment_type = $request->input('payment_type');
+        $data->payment_name = $request->input('payment_name');
         $data->email = $request->input('email');
         $data->payment_date = $request->input('payment_date');
         $data->approximate_amounte = $request->input('approximate_amounte');
+        $data->payment_link = $request->input('payment_link');
+        $data->reference = $request->input('reference_id');
+        $data->user = $request->input('user');
+        $data->password = $request->input('password');
+        $data->payment_instruction = $request->input('payment_instructions');
+        $data->account_number = $request->input('account_number');
+        $data->account_bank = $request->input('account_bank');
+        $data->identification = $request->input('identification');
+        $data->airline_link = $request->input('airline_link');
+        $data->flight_type = $request->input('flight_type');
+        $data->city_origin = $request->input('city_origin');
+        $data->destination_city = $request->input('destination_city');
+        $data->departure_date = $request->input('departure_date');
+        $data->outeard_flight_schedule = $request->input('outeard_flight_schedule');
+        $data->ida_observation = $request->input('ida_observation');
+        $data->city_origin_return = $request->input('city_origin_return');
+        $data->city_destination_return = $request->input('city_destination_return');
+        $data->return_date = $request->input('return_date');
+        $data->return_flight_schedule = $request->input('return_flight_schedule');
+        $data->return_observation = $request->input('return_observation');
 
         // Verificar si se ha enviado un archivo
         if ($request->hasFile('archivo')) {
@@ -68,14 +90,46 @@ class PayformController extends Controller
             'payment.payment_date',
             'payment.created_at',
             'payment_type.name',
+            'payment.payment_name',
+            'payment.email',
             'payment.file_url'
         )
-            ->join('payment_type', 'payment.type_payment', '=', 'payment_type.id')
+            ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
             ->get();
 
         return response()->json([
             'status' => 200,
             'data' => $data
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $data = Payform::findOrFail($id);
+        
+        $states = State::all();
+        $filghts_type = Type_flight::all();
+        $payments_type = Type_payment::all();
+        return view('edit', compact('data', 'states', 'filghts_type', 'payments_type'));
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+
+        $data = Payform::findOrFail($id);
+
+        $data->payment_type = $request->input('payment_type');
+        $data->payment_name = $request->input('payment_name');
+        $data->email = $request->input('email');
+        $data->payment_date = $request->input('payment_date');
+        $data->approximate_amounte = $request->input('approximate_amounte');
+        $data->save();
+
+        return response()->json([
+            'title' => 'Éxito',
+            'status' => 200,
+            'message' => 'Registro actualizado exitosamente'
         ]);
     }
 }

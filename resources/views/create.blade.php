@@ -15,17 +15,18 @@
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">TIPO DE PAGO <span
                                             class="text-danger fw-bold">*</span></label>
-                                    <select name="payment_type" id="payment_type" class="form-control" data-title="Tipo de pago">
+                                    <select name="payment_type" id="payment_type" class="form-control"
+                                        data-title="Tipo de pago">
                                         <option value="">Seleccione...</option>
-                                        @foreach ($type_payments as $type_payment)
-                                            <option value="{{ $type_payment->id }}">{{ $type_payment->name }}</option>
+                                        @foreach ($payments_type as $payment_type)
+                                            <option value="{{ $payment_type->id }}">{{ $payment_type->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">NOMBRE DEL PAGO<span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="text" name="pay_name" id="pay_name" class="form-control"
+                                    <input type="text" name="payment_name" id="payment_name" class="form-control"
                                         data-title="Nombre del pago">
                                 </div>
                             </div>
@@ -36,7 +37,7 @@
                                     <label for="" class="fw-bold mb-2">ADJUNTAR ARCHIVO<span
                                             class="text-danger fw-bold">*</span></label>
                                     <input type="file" class="form-control form-control-lg" name="archivo" id="archivo"
-                                        data-title="Documento">
+                                        data-title="Archivo">
                                 </div>
                             </div>
                         </div>
@@ -45,8 +46,8 @@
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">CORREO SOLICITANTE<span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="email" name="email" id="email"
-                                        class="form-control" data-title="Correo Solicitante">
+                                    <input type="email" name="email" id="email" class="form-control"
+                                        data-title="Correo Solicitante">
                                 </div>
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">FECHA DE PAGO<span
@@ -67,18 +68,18 @@
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">MONTO APROXIMADO<span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="number" name="approximate_amounte" id="approximate_amounte" class="form-control"
-                                        data-title="Monto Aproximado">
+                                    <input type="number" name="approximate_amounte" id="approximate_amounte"
+                                        class="form-control" data-title="Monto Aproximado">
                                 </div>
                             </div>
                         </div>
                         <!-- PSE y PORTALES -->
                         <div class="col mb-4">
                             <div class="row">
-                                <div class="col d-none" id="option_pay_link_pse_portals">
+                                <div class="col d-none" id="option_payment_link_pse_portals">
                                     <label for="" class="fw-bold mb-2">LINK DE PAGO <span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="text" name="pay_link" id="pay_link" class="form-control"
+                                    <input type="text" name="payment_link" id="payment_link" class="form-control"
                                         data-title="Link de Pago">
                                 </div>
                                 <div class="col d-none" id="option_reference_id_pse_portals">
@@ -108,10 +109,10 @@
                         </div>
                         <div class="col bm-4">
                             <div class="row">
-                                <div class="col d-none" id="option_pay_instructions_pse_portals">
+                                <div class="col d-none" id="option_payment_instructions_pse_portals">
                                     <label for="" class="fw-bold mb-2">INSTRUCCIONES DE PAGO <span
                                             class="text-danger fw-bold">*</span></label>
-                                    <input type="text" name="pay_instructions" id="pay_instructions"
+                                    <input type="text" name="payment_instructions" id="payment_instructions"
                                         class="form-control" data-title="Instrucciones de Pago">
                                 </div>
                             </div>
@@ -139,8 +140,8 @@
                                     <div class="col">
                                         <label for="" class="fw-bold mb-2">CEDULA DE QUIEN RECIBE <span
                                                 class="text-danger fw-bold">*</span></label>
-                                        <input type="text" name="id_card" id="id_card" class="form-control"
-                                            data-title="Cedula de quien recibe">
+                                        <input type="number" name="identification" id="identification"
+                                            class="form-control" data-title="Cedula de quien recibe">
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +159,7 @@
                                     <div class="col">
                                         <label for="" class="fw-bold mb-2">TIPO DE VUELO <span
                                                 class="text-danger fw-bold">*</span></label>
-                                        <select name="type_flight" id="type_flight" class="form-control"
+                                        <select name="flight_type" id="flight_type" class="form-control"
                                             data-title="Tipo de Vuelo">
                                             <option value="">Seleccione...</option>
                                             @foreach ($type_filghts as $type_filght)
@@ -183,7 +184,7 @@
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">CIUDAD DESTINO IDA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <input type="text" name="city_destination" id="city_destination"
+                                            <input type="text" name="destination_city" id="destination_city"
                                                 class="form-control" data-title="Ciudad Destino Ida">
                                         </div>
                                     </div>
@@ -193,14 +194,15 @@
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">FECHA DE IDA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <input type="text" name="date_departure" id="date_departure"
+                                            <input type="text" name="departure_date" id="departure_date"
                                                 class="form-control" data-title="Fecha de Ida">
                                         </div>
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">HORARIO VUELO IDA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <input type="text" name="one_way_time" id="one_way_time"
-                                                class="form-control" data-title="Horario Vuelo Ida">
+                                            <input type="text" name="outeard_flight_schedule"
+                                                id="outeard_flight_schedule" class="form-control"
+                                                data-title="Horario Vuelo Ida">
                                         </div>
                                     </div>
                                 </div>
@@ -209,8 +211,8 @@
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">OBSERVACIONES IDA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <textarea name="departure_observation" id="departure_observation" cols="10" rows="5"
-                                                class="form-control" data-title="Observaciones Ida"></textarea>
+                                            <textarea name="ida_observation" id="ida_observation" cols="10" rows="5" class="form-control"
+                                                data-title="Observaciones Ida"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -239,14 +241,15 @@
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">FECHA DE VUELTA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <input type="text" name="date_return" id="date_return"
+                                            <input type="text" name="return_date" id="return_date"
                                                 class="form-control" data-title="Fecha de Vuelta">
                                         </div>
                                         <div class="col">
                                             <label for="" class="fw-bold mb-2">HORARIO VUELO VUELTA <span
                                                     class="text-danger fw-bold">*</span></label>
-                                            <input type="text" name="time_return" id="time_return"
-                                                class="form-control" data-title="Horario Vuelo Vuelta">
+                                            <input type="text" name="return_flight_schedule"
+                                                id="return_flight_schedule" class="form-control"
+                                                data-title="Horario Vuelo Vuelta">
                                         </div>
                                     </div>
                                 </div>

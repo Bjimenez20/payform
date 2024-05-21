@@ -7,23 +7,23 @@ $(document).ready(function () {
             $('#vuelo_ida').addClass('d-none');
         }
         if (selectedTipoPago == '3') {
-            $('#option_pay_link_pse_portals').removeClass('d-none');
+            $('#option_payment_link_pse_portals').removeClass('d-none');
             $('#option_reference_id_pse_portals').removeClass('d-none');
-            $('#option_pay_instructions_pse_portals').removeClass('d-none');
+            $('#option_payment_instructions_pse_portals').removeClass('d-none');
             $('#vuelo_vuelta').addClass('d-none');
             $('#vuelo_ida').addClass('d-none');
         } else if (selectedTipoPago == '5') {
-            $('#option_pay_link_pse_portals').removeClass('d-none');
+            $('#option_payment_link_pse_portals').removeClass('d-none');
             $('#option_reference_id_pse_portals').removeClass('d-none');
-            $('#option_pay_instructions_pse_portals').removeClass('d-none');
+            $('#option_payment_instructions_pse_portals').removeClass('d-none');
             $('#option_user_portals').removeClass('d-none');
             $('#option_password_portals').removeClass('d-none');
             $('#vuelo_vuelta').addClass('d-none');
             $('#vuelo_ida').addClass('d-none');
         } else {
-            $('#option_pay_link_pse_portals').addClass('d-none');
+            $('#option_payment_link_pse_portals').addClass('d-none');
             $('#option_reference_id_pse_portals').addClass('d-none');
-            $('#option_pay_instructions_pse_portals').addClass('d-none');
+            $('#option_payment_instructions_pse_portals').addClass('d-none');
             $('#option_user_portals').addClass('d-none');
             $('#option_password_portals').addClass('d-none');
         }
@@ -43,7 +43,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#type_flight').on('change', function () {
+    $('#flight_type').on('change', function () {
         var selectedTipoVuelo = $(this).val();
 
         if (selectedTipoVuelo == '1') {
@@ -65,55 +65,54 @@ $(document).ready(function () {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         let payment_type = document.getElementById('payment_type').value;
-        let type_flight = document.getElementById('type_flight').value;
+        let flight_type = document.getElementById('flight_type').value;
 
         let validador = {
             payment_type: payment_type,
-            pay_name: document.getElementById('pay_name').value,
+            payment_name: document.getElementById('payment_name').value,
             email: document.getElementById('email').value,
             payment_date: document.getElementById('payment_date').value,
             approximate_amounte: document.getElementById('approximate_amounte').value,
-            type_flight: type_flight
         };
 
         if (payment_type == '1' || payment_type == '2') {
             validador.archivo = document.getElementById('archivo').value
         } else if (payment_type == '3') {
-            validador.pay_link = document.getElementById('pay_link').value
+            validador.payment_link = document.getElementById('payment_link').value
             validador.reference_id = document.getElementById('reference_id').value
-            validador.pay_instructions = document.getElementById('pay_instructions').value
+            validador.payment_instructions = document.getElementById('payment_instructions').value
         } else if (payment_type == '4') {
-            validador.type_flight = type_flight
+            validador.flight_type = flight_type
             validador.airline_link = document.getElementById('airline_link').value
         } else if (payment_type == '5') {
-            validador.pay_link = document.getElementById('pay_link').value
+            validador.payment_link = document.getElementById('payment_link').value
             validador.reference_id = document.getElementById('reference_id').value
             validador.user = document.getElementById('user').value
             validador.password = document.getElementById('password').value
-            validador.pay_instructions = document.getElementById('pay_instructions').value
+            validador.payment_instructions = document.getElementById('payment_instructions').value
         } else if (payment_type == '6') {
             validador.account_number = document.getElementById('account_number').value
             validador.account_bank = document.getElementById('account_bank').value
-            validador.id_card = document.getElementById('id_card').value
+            validador.identification = document.getElementById('identification').value
         }
 
-        if (type_flight == '1') {
+        if (flight_type == '1') {
             validador.city_origin = document.getElementById('city_origin').value
-            validador.city_destination = document.getElementById('city_destination').value
-            validador.date_departure = document.getElementById('date_departure').value
-            validador.one_way_time = document.getElementById('one_way_time').value
-            validador.departure_observation = document.getElementById('departure_observation').value
+            validador.destination_city = document.getElementById('destination_city').value
+            validador.departure_date = document.getElementById('departure_date').value
+            validador.outeard_flight_schedule = document.getElementById('outeard_flight_schedule').value
+            validador.ida_observation = document.getElementById('ida_observation').value
             validador.city_origin_return = document.getElementById('city_origin_return').value
             validador.city_destination_return = document.getElementById('city_destination_return').value
-            validador.date_return = document.getElementById('date_return').value
-            validador.time_return = document.getElementById('time_return').value
+            validador.return_date = document.getElementById('return_date').value
+            validador.return_flight_schedule = document.getElementById('return_flight_schedule').value
             validador.return_observation = document.getElementById('return_observation').value
-        } else if (type_flight == '2') {
+        } else if (flight_type == '2') {
             validador.city_origin = document.getElementById('city_origin').value
-            validador.city_destination = document.getElementById('city_destination').value
-            validador.date_departure = document.getElementById('date_departure').value
-            validador.one_way_time = document.getElementById('one_way_time').value
-            validador.departure_observation = document.getElementById('departure_observation').value
+            validador.destination_city = document.getElementById('destination_city').value
+            validador.departure_date = document.getElementById('departure_date').value
+            validador.outeard_flight_schedule = document.getElementById('outeard_flight_schedule').value
+            validador.ida_observation = document.getElementById('ida_observation').value
         }
 
         let allFieldsFilled = true;
@@ -139,9 +138,29 @@ $(document).ready(function () {
             console.log(formData);
             var data = {
                 payment_type: document.getElementById('payment_type').value,
+                payment_name: document.getElementById('payment_name').value,
                 email: document.getElementById('email').value,
                 payment_date: document.getElementById('payment_date').value,
-                // approximate_amounte: document.getElementById('approximate_amounte').value
+                approximate_amounte: document.getElementById('approximate_amounte').value,
+                payment_link: document.getElementById('payment_link').value,
+                reference_id: document.getElementById('reference_id').value,
+                payment_instructions: document.getElementById('payment_instructions').value,
+                user: document.getElementById('user').value,
+                password: document.getElementById('password').value,
+                airline_link: document.getElementById('airline_link').value,
+                city_origin: document.getElementById('city_origin').value,
+                destination_city: document.getElementById('destination_city').value,
+                departure_date: document.getElementById('departure_date').value,
+                outeard_flight_schedule: document.getElementById('outeard_flight_schedule').value,
+                ida_observation: document.getElementById('ida_observation').value,
+                city_origin_return: document.getElementById('city_origin_return').value,
+                city_destination_return: document.getElementById('city_destination_return').value,
+                return_date: document.getElementById('return_date').value,
+                return_flight_schedule: document.getElementById('return_flight_schedule').value,
+                return_observation: document.getElementById('return_observation').value,
+                account_number: document.getElementById('account_number').value,
+                account_bank: document.getElementById('account_bank').value,
+                identification: document.getElementById('identification').value
             }
 
             showLoadingAlert()
