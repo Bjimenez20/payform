@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.administration.app')
 @section('content')
     <div class="row-reverse">
         <div class="card card-body shadow">

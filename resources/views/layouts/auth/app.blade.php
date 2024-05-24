@@ -16,7 +16,7 @@
 		</div>
 	</main>
 
-	@vite('resources/js/app.js')
+	@vite('resources/assets/js/app.js')
 
 </body>
 

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.administration.app')
 
 @section('content')
     <div class="row">
@@ -13,13 +13,6 @@
                     <div class="row mb-3">
                         <div class="col">
                             <h2 class="fw-bold">Listado de pagos</h2>
-                        </div>
-                        <div class="col text-end">
-                            <!-- Botón de cierre de sesión -->
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-                            </form>
                         </div>
                     </div>
                     <div class="row-reverse" id="list">
