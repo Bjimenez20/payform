@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('return_flight_schedule');
             $table->string('return_observation');
             $table->string('file_url');
+            $table->foreignId('state_id');
             $table->timestamps();
         });
     }

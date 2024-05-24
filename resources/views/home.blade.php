@@ -33,6 +33,7 @@
                                         <th scope="col">CORREO DEL SOLICITANTE</th>
                                         <th scope="col">FECHA DE PAGO</th>
                                         <th scope="col">FECHA DE CREACIÓN</th>
+                                        <th scope="col">ESTADO DEL PAGO</th>
                                         <th scope="col">ARCHIVO</th>
                                         <th scope="col">ACCIÓN</th>
                                     </tr>

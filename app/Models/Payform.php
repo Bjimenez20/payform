@@ -19,8 +19,7 @@ class Payform extends Model implements HasMedia
         'payment_type',
         'email',
         'payment_date',
-        'approximate_amounte',
-        'payment_link'
+        'approximate_amounte'
     ];
 
     protected $casts = [
@@ -40,6 +39,11 @@ class Payform extends Model implements HasMedia
     public function type_flight()
     {
         return $this->belongsTo(Type_flight::class, 'flight_type', 'id');
+    }
+
+    public function payment_state()
+    {
+        return $this->belongsTo(Payment_state::class, 'state_id', 'id');
     }
 
     public function registerMediaCollections(): void
