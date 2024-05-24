@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Payform;
+use App\Models\Payment_state;
 use App\Models\State;
 use App\Models\Type_flight;
 use App\Models\Type_payment;
@@ -85,16 +86,18 @@ class PayformController extends Controller
 
     public function list()
     {
-        $data = Payform::select(
-            'payment.id',
-            'payment.payment_date',
-            'payment.created_at',
-            'payment_type.name',
-            'payment.payment_name',
-            'payment.email',
-            'payment.file_url'
+        $data = Payform::selectRaw(
+            'payment.id,
+             payment.payment_date,
+             payment.created_at,
+             payment_type.name type_name,
+             payment.payment_name,
+             payment.email,
+             payment.file_url,
+             payment_states.name payment_states'
         )
             ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
+            ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
             ->get();
 
         return response()->json([
@@ -106,25 +109,47 @@ class PayformController extends Controller
     public function edit($id)
     {
         $data = Payform::findOrFail($id);
-        
+
         $states = State::all();
         $filghts_type = Type_flight::all();
         $payments_type = Type_payment::all();
-        return view('edit', compact('data', 'states', 'filghts_type', 'payments_type'));
+        $payments_states = Payment_state::all();
+        return view('edit', compact('data', 'states', 'filghts_type', 'payments_type', 'payments_states'));
     }
 
     public function update(Request $request)
     {
         $id = $request->input('id');
 
-        $data = Payform::findOrFail($id);
+        payform::where('id', $id)->update([
+            'payment_type' => $request->input('payment_type'),
+            'payment_name' => $request->input('payment_name'),
+            'state_id' => $request->input('payment_state'),
+            'email' => $request->input('email'),
+            'payment_date' => $request->input('payment_date'),
+            'approximate_amounte' => $request->input('approximate_amounte'),
+            'payment_link' => $request->input('payment_link'),
+            'reference' => $request->input('reference_id'),
+            'user' => $request->input('user'),
+            'password' => $request->input('password'),
+            'payment_instruction' => $request->input('payment_instructions'),
+            'account_number' => $request->input('account_number'),
+            'account_bank' => $request->input('account_bank'),
+            'identification' => $request->input('identification'),
+            'airline_link' => $request->input('airline_link'),
+            'flight_type' => $request->input('flight_type'),
+            'city_origin' => $request->input('city_origin'),
+            'destination_city' => $request->input('destination_city'),
+            'departure_date' => $request->input('departure_date'),
+            'outeard_flight_schedule' => $request->input('outeard_flight_schedule'),
+            'ida_observation' => $request->input('ida_observation'),
+            'city_origin_return' => $request->input('city_origin_return'),
+            'city_destination_return' => $request->input('city_destination_return'),
+            'return_date' => $request->input('return_date'),
+            'return_flight_schedule' => $request->input('return_flight_schedule'),
+            'return_observation' => $request->input('return_observation')
 
-        $data->payment_type = $request->input('payment_type');
-        $data->payment_name = $request->input('payment_name');
-        $data->email = $request->input('email');
-        $data->payment_date = $request->input('payment_date');
-        $data->approximate_amounte = $request->input('approximate_amounte');
-        $data->save();
+        ]);
 
         return response()->json([
             'title' => 'Éxito',

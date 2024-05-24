@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.administration.app')
 @section('content')
     <div class="row-reverse">
         <div class="card card-body shadow">
@@ -32,11 +32,29 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="fw-bold mb-2">ESTADO DEL PAGO <span
+                                            class="text-danger fw-bold">*</span></label>
+                                    <select name="payment_state" id="payment_state" class="form-control"
+                                        data-title="Tipo de pago">
+                                        <option value="{{ $data->state_id }}"> {{ $data->payment_state->name }}</option>
+                                        @foreach ($payments_states as $payment_states)
+                                            <option value="{{ $payment_states->id }}">
+                                                {{ $payment_states->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">NOMBRE DEL PAGO<span
                                             class="text-danger fw-bold">*</span></label>
                                     <input type="text" name="payment_name" id="payment_name"
-                                        value="{{ $data->payment_name }}" class="form-control" data-title="Nombre del pago">
+                                        value="{{ $data->payment_name }}" class="form-control"
+                                        data-title="Nombre del pago">
                                 </div>
                             </div>
                         </div>
@@ -87,14 +105,14 @@
                         @if ($data->type_payment->id == 3 || $data->type_payment->id == 5)
                             <div class="col mb-4">
                                 <div class="row">
-                                    <div class="col" id="option_payment_link_pse_portals">
+                                    <div class="col">
                                         <label for="" class="fw-bold mb-2">LINK DE PAGO <span
                                                 class="text-danger fw-bold">*</span></label>
                                         <input type="text" name="payment_link" id="payment_link"
                                             value="{{ $data->payment_link }}" class="form-control"
                                             data-title="Link de Pago">
                                     </div>
-                                    <div class="col" id="option_reference_id_pse_portals">
+                                    <div class="col">
                                         <label for="" class="fw-bold mb-2">ID DE REFERENCIA <span
                                                 class="text-danger fw-bold">*</span></label>
                                         <input type="text" name="reference_id" id="reference_id"
@@ -108,13 +126,13 @@
                         @if ($data->type_payment->id == 5)
                             <div class="col mb-4">
                                 <div class="row">
-                                    <div class="col" id="option_user_portals">
+                                    <div class="col">
                                         <label for="" class="fw-bold mb-2">USUARIO <span
                                                 class="text-danger fw-bold">*</span></label>
                                         <input type="text" name="user" id="user" value="{{ $data->user }}"
                                             class="form-control" data-title="Usuario">
                                     </div>
-                                    <div class="col" id="option_password_portals">
+                                    <div class="col">
                                         <label for="" class="fw-bold mb-2">CONTRASEÑA <span
                                                 class="text-danger fw-bold">*</span></label>
                                         <input type="text" name="password" id="password"
@@ -126,7 +144,7 @@
                         @if ($data->type_payment->id == 3 || $data->type_payment->id == 5)
                             <div class="col bm-4">
                                 <div class="row">
-                                    <div class="col" id="option_payment_instructions_pse_portals">
+                                    <div class="col">
                                         <label for="" class="fw-bold mb-2">INSTRUCCIONES DE PAGO <span
                                                 class="text-danger fw-bold">*</span></label>
                                         <input type="text" name="payment_instructions" id="payment_instructions"

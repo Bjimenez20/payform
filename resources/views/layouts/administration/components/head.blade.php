@@ -9,15 +9,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}"/>
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>PayForm</title>
+    <title>PayForm - Panel Administrativo</title>
+
+    @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
-    @vite('resources/js/app.js')
+    <script src="https://code.iconify.design/iconify-icon/2.0.0/iconify-icon.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
@@ -25,6 +28,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
     <link href="{{ asset('assets/DataTables/DataTables-1.13.4/css/jquery.dataTables.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/DataTables/Buttons-2.3.6/css/buttons.dataTables.css') }}" rel="stylesheet" />
@@ -37,19 +41,4 @@
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.colVis.js') }}"></script>
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.html5.js') }}"></script>
     <script src="{{ asset('assets/DataTables/Buttons-2.3.6/js/buttons.print.js') }}"></script>
-    <style>
-        body {
-            background-size: cover;
-            background-position: top;
-        }
-
-        .btn-personality-first {
-            background: rgb(24, 96, 240);
-            background: linear-gradient(270deg, rgba(24, 96, 240, 1) 35%, rgba(24, 179, 240, 1) 100%);
-        }
-
-        h3 {
-            color: #5718B0;
-        }
-    </style>
 </head>

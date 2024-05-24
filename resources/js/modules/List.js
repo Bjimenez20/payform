@@ -35,7 +35,7 @@ $('#listPayform').DataTable({
             data: 'id'
         },
         {
-            data: 'name'
+            data: 'type_name'
         },
         {
             data: 'payment_name'
@@ -56,6 +56,9 @@ $('#listPayform').DataTable({
         },
         {
             data: 'created_at'
+        },
+        {
+            data: 'payment_states'
         },
         {
             data: 'file_url',

@@ -5,6 +5,8 @@
 
 <body>
     @yield('content')
+
+    @vite('resources/assets/js/app.js')
 </body>
 
 </html>
