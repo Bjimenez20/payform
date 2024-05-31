@@ -18,6 +18,11 @@ class PayformController extends Controller
         return view('home');
     }
 
+    public function homeothers()
+    {
+        return view('homeothers');
+    }
+
     public function create()
     {
         $payments_type = Type_payment::all();
@@ -98,6 +103,30 @@ class PayformController extends Controller
         )
             ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
             ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
+            ->where('payment_states.name', '=', 'Cargado')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $data
+        ]);
+    }
+
+    public function listother()
+    {
+        $data = Payform::selectRaw(
+            'payment.id,
+             payment.payment_date,
+             payment.created_at,
+             payment_type.name type_name,
+             payment.payment_name,
+             payment.email,
+             payment.file_url,
+             payment_states.name payment_states'
+        )
+            ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
+            ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
+            ->where('payment_states.name', '!=', 'Cargado')
             ->get();
 
         return response()->json([

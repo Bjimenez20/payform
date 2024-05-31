@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col">
-                            <h2 class="fw-bold">Listado de pagos cargados</h2>
+                            <h2 class="fw-bold">Listado de pagos</h2>
                         </div>
                     </div>
                     <div class="row-reverse" id="list">
@@ -59,7 +59,7 @@
     </div>
 
     <script>
-        var listUrl = "{{ route('list') }}"
+        var listUrl = "{{ route('listother') }}"
         var showUrl = "{{ route('show', ':id') }}"
         var editUrl = "{{ route('edit', ':id') }}"
         var deleteUrl = "{{ route('delete', ':id') }}"

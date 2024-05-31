@@ -73,13 +73,10 @@ $('#listPayform').DataTable({
         {
             data: null,
             render: function (data, type, row) {
-                var showUrlDynamic = showUrl.replace(':id', row.id);
                 var editUrlDynamic = editUrl.replace(':id', row.id);
 
                 var buttonsHtml = '<div class="row-reverse">' +
                     '<div class="col d-flex justify-content-center mb-1">';
-
-                buttonsHtml += '<a href="' + showUrlDynamic + '" class="btn btn-sm btn-primary "><span class="iconify text-white" data-icon="ic:baseline-remove-red-eye"></span></a>';
 
                 buttonsHtml += '</div>' +
                     '<div class="col d-flex justify-content-center">';

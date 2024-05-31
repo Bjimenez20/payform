@@ -11,7 +11,13 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('home') }}">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Pagos</span>
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Pagos Cargados</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('homeother') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Otros pagos</span>
                 </a>
             </li>
 
