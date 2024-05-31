@@ -59,6 +59,13 @@
     </div>
 
     <script>
+        window.permissions = {
+            canEditPayment: @json(auth()->user()->can('payment.edit')),
+            canDeletePayment: @json(auth()->user()->can('payment.delete')),
+        };
+    </script>
+    
+    <script>
         var listUrl = "{{ route('listother') }}"
         var showUrl = "{{ route('show', ':id') }}"
         var editUrl = "{{ route('edit', ':id') }}"

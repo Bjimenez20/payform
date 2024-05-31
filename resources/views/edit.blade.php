@@ -8,8 +8,15 @@
                         <h2 class="fw-bold">Actualizar Pago</h2>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <a href="{{ route('home') }}" class="btn btn-primary  rounded-5">VER
-                            REGISTROS</a>
+                        <a href="{{ route('home') }}" class="btn btn-primary  rounded-5">
+                            <svg width="50" height="16" viewBox="0 0 50 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 8H2M5 11L2 8L5 5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <text x="16" y="12" fill="currentColor" font-family="Arial, sans-serif"
+                                    font-size="12">Atras</text>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -381,6 +388,7 @@
             </div>
         </div>
     </div>
+
     <script>
         var dataId = '{{ $data->id }}';
         var updateUrl = "{{ route('update') }}";

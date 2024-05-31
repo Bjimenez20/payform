@@ -18,9 +18,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/list', 'list')->name('list');
         Route::get('/listother', 'listother')->name('listother');
         Route::get('/show', 'show')->name('show');
-        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::get('/edit/{id}', 'edit')->name('edit')->middleware(['can:payment.edit']);
         Route::post('/update', 'update')->name('update');
-        Route::get('/delete', 'delete')->name('delete');
+        Route::get('/delete', 'delete')->name('delete')->middleware(['can:payment.delete']);
     });
 });
 

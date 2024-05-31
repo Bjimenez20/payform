@@ -9,7 +9,9 @@ use App\Models\Payment_state;
 use App\Models\State;
 use App\Models\Type_flight;
 use App\Models\Type_payment;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PayformController extends Controller
 {
@@ -91,7 +93,9 @@ class PayformController extends Controller
 
     public function list()
     {
-        $data = Payform::selectRaw(
+        $user = Auth::user();
+        // dd($user->role);
+        $dataQuery = Payform::selectRaw(
             'payment.id,
              payment.payment_date,
              payment.created_at,
@@ -103,8 +107,13 @@ class PayformController extends Controller
         )
             ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
             ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
-            ->where('payment_states.name', '=', 'Cargado')
-            ->get();
+            ->where('payment_states.name', '=', 'Cargado');
+        if($user->role == 'Solicitante'){
+
+            $dataQuery->where('payment.email', $user->email);
+
+        }
+        $data = $dataQuery->get();
 
         return response()->json([
             'status' => 200,
