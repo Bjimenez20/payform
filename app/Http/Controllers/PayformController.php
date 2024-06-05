@@ -94,7 +94,6 @@ class PayformController extends Controller
     public function list()
     {
         $user = Auth::user();
-        // dd($user->role);
         $dataQuery = Payform::selectRaw(
             'payment.id,
              payment.payment_date,
@@ -108,10 +107,9 @@ class PayformController extends Controller
             ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
             ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
             ->where('payment_states.name', '=', 'Cargado');
-        if($user->role == 'Solicitante'){
+        if ($user->hasRole('Solicitante')) {
 
             $dataQuery->where('payment.email', $user->email);
-
         }
         $data = $dataQuery->get();
 

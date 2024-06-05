@@ -43,19 +43,21 @@
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <div class="col">
-                                    <label for="" class="fw-bold mb-2">ESTADO DEL PAGO <span
-                                            class="text-danger fw-bold">*</span></label>
-                                    <select name="payment_state" id="payment_state" class="form-control"
-                                        data-title="Tipo de pago">
-                                        <option value="{{ $data->state_id }}"> {{ $data->payment_state->name }}</option>
-                                        @foreach ($payments_states as $payment_states)
-                                            <option value="{{ $payment_states->id }}">
-                                                {{ $payment_states->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                @can('state.edit')
+                                    <div class="col">
+                                        <label for="" class="fw-bold mb-2">ESTADO DEL PAGO <span
+                                                class="text-danger fw-bold">*</span></label>
+                                        <select name="payment_state" id="payment_state" class="form-control"
+                                            data-title="Tipo de pago">
+                                            <option value="{{ $data->state_id }}"> {{ $data->payment_state->name }}</option>
+                                            @foreach ($payments_states as $payment_states)
+                                                <option value="{{ $payment_states->id }}">
+                                                    {{ $payment_states->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @endcan
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">NOMBRE DEL PAGO<span
                                             class="text-danger fw-bold">*</span></label>
