@@ -1720,7 +1720,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Laravel\\Sanctum\\": "src/"
@@ -1919,7 +1919,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Laravel\\Ui\\": "src/",
@@ -2389,7 +2389,7 @@
             },
             "time": "2023-06-21T14:59:35+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "ZipStream\\": "src/"
@@ -5828,7 +5828,7 @@
             },
             "time": "2024-05-07T08:56:10+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Spatie\\Image\\": "src"
@@ -5895,7 +5895,7 @@
             },
             "time": "2024-05-06T09:12:30+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Spatie\\ImageOptimizer\\": "src"
@@ -6085,7 +6085,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Spatie\\MediaLibrary\\": "src"
@@ -6159,7 +6159,7 @@
             },
             "time": "2024-03-20T07:29:11+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Spatie\\LaravelPackageTools\\": "src"
@@ -6217,7 +6217,7 @@
             },
             "time": "2023-12-25T11:46:58+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Spatie\\TemporaryDirectory\\": "src"
