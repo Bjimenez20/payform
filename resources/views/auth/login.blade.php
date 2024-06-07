@@ -1,17 +1,16 @@
 @extends('layouts.auth.app')
 
 @section('content')
-    <div class="text-center my-5">
-        <img src="{{ asset('assets/img/unnamed.png') }}" alt="Overall Colombia Logo" class="w-25 mb-3">
-        <h1 class="h2">Bienvenido a Overall Colombia!</h1>
-        <p class="lead">
-            Por favor ingresa con tus credenciales
-        </p>
-    </div>
-
     <div class="card mx-auto shadow-lg" style="max-width: 500px;">
         <div class="card-body">
             <div class="m-sm-4">
+                <div class="text-center my-5">
+                    <img src="{{ asset('assets/img/unnamed.png') }}" alt="Overall Colombia Logo" class="w-25 mb-3">
+                    <h1 class="h2">Bienvenido a Overall Colombia!</h1>
+                    <p class="lead">
+                        Por favor ingresa con tus credenciales
+                    </p>
+                </div>
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="mb-3">
