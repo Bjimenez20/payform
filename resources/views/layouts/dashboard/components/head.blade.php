@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}"/>
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
@@ -48,8 +48,22 @@
             background: linear-gradient(270deg, rgba(24, 96, 240, 1) 35%, rgba(24, 179, 240, 1) 100%);
         }
 
-        h3 {
-            color: #5718B0;
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: white;
         }
+
+        /* .card-header {
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+        } */
     </style>
 </head>

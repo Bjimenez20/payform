@@ -8,12 +8,21 @@
             <li class="sidebar-header">
                 Menú
             </li>
+            @can('payment.list')
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('home') }}">
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Pagos Cargados</span>
+                    </a>
+                </li>
+            @endcan
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('home') }}">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Pagos</span>
-                </a>
-            </li>
+            @can('other.payment')
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('homeother') }}">
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Otros pagos</span>
+                    </a>
+                </li>
+            @endcan
 
             <li class="sidebar-header">
                 Opciones

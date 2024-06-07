@@ -8,8 +8,15 @@
                         <h2 class="fw-bold">Actualizar Pago</h2>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <a href="{{ route('home') }}" class="btn btn-primary  rounded-5">VER
-                            REGISTROS</a>
+                        <a href="{{ route('home') }}" class="btn btn-primary  rounded-5">
+                            <svg width="50" height="16" viewBox="0 0 50 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 8H2M5 11L2 8L5 5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <text x="16" y="12" fill="currentColor" font-family="Arial, sans-serif"
+                                    font-size="12">Atras</text>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -36,19 +43,21 @@
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <div class="col">
-                                    <label for="" class="fw-bold mb-2">ESTADO DEL PAGO <span
-                                            class="text-danger fw-bold">*</span></label>
-                                    <select name="payment_state" id="payment_state" class="form-control"
-                                        data-title="Tipo de pago">
-                                        <option value="{{ $data->state_id }}"> {{ $data->payment_state->name }}</option>
-                                        @foreach ($payments_states as $payment_states)
-                                            <option value="{{ $payment_states->id }}">
-                                                {{ $payment_states->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                @can('state.edit')
+                                    <div class="col">
+                                        <label for="" class="fw-bold mb-2">ESTADO DEL PAGO <span
+                                                class="text-danger fw-bold">*</span></label>
+                                        <select name="payment_state" id="payment_state" class="form-control"
+                                            data-title="Tipo de pago">
+                                            <option value="{{ $data->state_id }}"> {{ $data->payment_state->name }}</option>
+                                            @foreach ($payments_states as $payment_states)
+                                                <option value="{{ $payment_states->id }}">
+                                                    {{ $payment_states->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @endcan
                                 <div class="col">
                                     <label for="" class="fw-bold mb-2">NOMBRE DEL PAGO<span
                                             class="text-danger fw-bold">*</span></label>
@@ -381,6 +390,7 @@
             </div>
         </div>
     </div>
+
     <script>
         var dataId = '{{ $data->id }}';
         var updateUrl = "{{ route('update') }}";

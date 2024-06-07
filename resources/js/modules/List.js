@@ -73,24 +73,24 @@ $('#listPayform').DataTable({
         {
             data: null,
             render: function (data, type, row) {
-                var showUrlDynamic = showUrl.replace(':id', row.id);
                 var editUrlDynamic = editUrl.replace(':id', row.id);
 
-                var buttonsHtml = '<div class="row-reverse">' +
-                    '<div class="col d-flex justify-content-center mb-1">';
+                return `
+                <div class="row-reverse">
+                    ${window.permissions.canEditPayment ? `
+                    <div class="col d-flex justify-content-center mb-1">
+                        <a href="${editUrlDynamic}" class="btn btn-sm btn-primary bg-gradient btnEditPayment d-flex align-items-center">
+                            <span class="iconify text-white me-1" data-icon="iconamoon:edit-thin" data-height="20"></span> Editar
+                        </a>
+                    </div>` : ''}
 
-                buttonsHtml += '<a href="' + showUrlDynamic + '" class="btn btn-sm btn-primary "><span class="iconify text-white" data-icon="ic:baseline-remove-red-eye"></span></a>';
-
-                buttonsHtml += '</div>' +
-                    '<div class="col d-flex justify-content-center">';
-                buttonsHtml += '<a href="' + editUrlDynamic + '" class="btn btn-sm btn-warning "><span class="iconify text-white" data-icon="material-symbols:edit-document"></span></a>';
-
-                buttonsHtml += '<a data-id="' + row.id + '" class="btn btn-sm btn-danger  btnDelete"><span class="iconify text-white" data-icon="material-symbols:delete-forever"></span></a>';
-
-                buttonsHtml += '</div>' +
-                    '</div>';
-
-                return buttonsHtml;
+                    ${window.permissions.canDeletePayment ? `
+                    <div class="col d-flex justify-content-center">
+                        <a data-id="${row.id}" class="btn btn-sm btn-danger bg-gradient d-flex align-items-center btnDelete">
+                            <span class="iconify text-white me-1" data-icon="material-symbols:delete-forever" data-height="20"></span> Eliminar
+                        </a>
+                    </div>` : ''}
+                </div>`;
             }
         }
     ],

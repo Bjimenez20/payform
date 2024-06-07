@@ -9,13 +9,20 @@ use App\Models\Payment_state;
 use App\Models\State;
 use App\Models\Type_flight;
 use App\Models\Type_payment;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PayformController extends Controller
 {
     public function home()
     {
         return view('home');
+    }
+
+    public function homeothers()
+    {
+        return view('homeothers');
     }
 
     public function create()
@@ -86,6 +93,34 @@ class PayformController extends Controller
 
     public function list()
     {
+        $user = Auth::user();
+        $dataQuery = Payform::selectRaw(
+            'payment.id,
+             payment.payment_date,
+             payment.created_at,
+             payment_type.name type_name,
+             payment.payment_name,
+             payment.email,
+             payment.file_url,
+             payment_states.name payment_states'
+        )
+            ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
+            ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
+            ->where('payment_states.name', '=', 'Cargado');
+        if ($user->hasRole('Solicitante')) {
+
+            $dataQuery->where('payment.email', $user->email);
+        }
+        $data = $dataQuery->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $data
+        ]);
+    }
+
+    public function listother()
+    {
         $data = Payform::selectRaw(
             'payment.id,
              payment.payment_date,
@@ -98,6 +133,7 @@ class PayformController extends Controller
         )
             ->join('payment_type', 'payment.payment_type', '=', 'payment_type.id')
             ->join('payment_states', 'payment.state_id', '=', 'payment_states.id')
+            ->where('payment_states.name', '!=', 'Cargado')
             ->get();
 
         return response()->json([
