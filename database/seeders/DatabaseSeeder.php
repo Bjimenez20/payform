@@ -15,9 +15,20 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        User::find(3)->assignRole('Consultor');
-        // User::find(1)->removeRole('Pagador');
+        // Asignar rol
+        // User::find(1)->assignRole('Administrador');
+        // User::find(2)->assignRole('Solicitante');
+        // User::find(3)->assignRole('Pagador');
+        // User::find(4)->assignRole('Consultor');
+
+        // Quitar el rol
+        // User::find(1)->removeRole('Solicitante');
+        // User::find(2)->removeRole('Administrador');
+        // User::find(3)->removeRole('Consultor');
+
+        // hacer dd
         // $rol = User::find(1)->getRoleNames();
         // dd($rol);
+
     }
 }
