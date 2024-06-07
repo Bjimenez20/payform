@@ -6,7 +6,7 @@ function showLoadingAlert() {
         showConfirmButton: false,
         allowOutsideClick: false,
         willClose: () => {
-            $('#fileModal').modal('hide');
+            $('#fileModal').hide();
         }
     });
 }
